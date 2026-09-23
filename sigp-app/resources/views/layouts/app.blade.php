@@ -88,8 +88,13 @@
             <!-- Logo Premium -->
             <div class="flex items-center justify-between p-3 border-b border-white/20 flex-shrink-0">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-lg">
-                       <img src="{{ asset('storage/' . app('config.helper')->get('logo_sistema')) }}" alt="Logo">
+                    <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
+                        @if(app('config.helper')->get('logo_sistema'))
+                            <img src="{{ asset('storage/' . app('config.helper')->get('logo_sistema')) }}" alt="Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-anchor text-primary text-sm hidden"></i>
+                        @else
+                            <i class="fas fa-anchor text-primary text-sm"></i>
+                        @endif
                     </div>
                     <div class="hidden sm:block">
                         <h1 class="font-bold text-base">SIGP</h1>

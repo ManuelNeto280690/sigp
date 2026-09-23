@@ -54,6 +54,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copiar código fonte da aplicação
 COPY . .
 
+# Fazer backup dos assets e logotipos padrão para sincronização com volumes vazios
+RUN mkdir -p storage_defaults && cp -r storage/app/public/* storage_defaults/ 2>/dev/null || true
+
 # Copiar assets estáticos compilados pelo Vite
 COPY --from=node_builder /app/public/build ./public/build
 

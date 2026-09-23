@@ -13,7 +13,17 @@ mkdir -p /var/www/html/storage/framework/views
 mkdir -p /var/www/html/storage/logs
 mkdir -p /var/www/html/bootstrap/cache
 
-# Criar atalho de storage público caso ainda não exista
+# Sincronizar assets e logotipos padrão para o volume persistente caso ainda não existam
+if [ -d /var/www/html/storage_defaults ]; then
+    echo "A sincronizar assets e logotipos padrão para o volume de storage..."
+    cp -rn /var/www/html/storage_defaults/* /var/www/html/storage/app/public/ 2>/dev/null || true
+fi
+
+# Garantir que public/storage seja um symlink válido apontando para storage/app/public
+echo "A verificar atalho simbólico public/storage..."
+if [ ! -L /var/www/html/public/storage ]; then
+    rm -rf /var/www/html/public/storage
+fi
 php artisan storage:link --force || true
 
 # Testar conexão com banco e rodar migrações

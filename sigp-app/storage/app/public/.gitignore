@@ -1,2 +1,6 @@
 *
 !.gitignore
+!configuracoes/
+!configuracoes/**
+!avatars/
+!avatars/**

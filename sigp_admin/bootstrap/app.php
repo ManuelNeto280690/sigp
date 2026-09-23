@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Confiar no Traefik / Cloudflare para gerar URLs HTTPS corretas
+        $middleware->trustProxies(at: '*');
+
         // Registrar middlewares personalizados
         $middleware->alias([
             '2fa' => Require2FA::class,
