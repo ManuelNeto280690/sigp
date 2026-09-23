@@ -13,10 +13,6 @@ mkdir -p /var/www/html/storage/framework/views
 mkdir -p /var/www/html/storage/logs
 mkdir -p /var/www/html/bootstrap/cache
 
-# Ajustar permissões para o utilizador www-data e nginx
-chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
 # Criar atalho de storage público caso ainda não exista
 php artisan storage:link --force || true
 
@@ -47,6 +43,15 @@ if [ -n "$APP_KEY" ]; then
 else
     echo "Aviso: APP_KEY não está definida nas variáveis de ambiente. Pulando cache."
 fi
+
+# Criar ficheiro de log se ainda não existir
+touch /var/www/html/storage/logs/laravel.log
+
+# Ajustar permissões finais para www-data e nginx APÓS os comandos artisan do root
+echo "A configurar permissões de leitura/escrita no storage e logs..."
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
+chmod 666 /var/www/html/storage/logs/laravel.log
 
 echo "=== A iniciar Supervisord (Nginx + PHP-FPM) ==="
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
