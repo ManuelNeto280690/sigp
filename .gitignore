@@ -1,0 +1,26 @@
+# Environment files
+**/.env
+**/.env.backup
+**/.env.production
+
+# Dependencies
+**/node_modules/
+**/vendor/
+
+# Storage & logs
+**/storage/logs/*.log
+**/storage/framework/cache/data/*
+**/storage/framework/sessions/*
+**/storage/framework/views/*
+!**/storage/**/.gitkeep
+
+# AGT Keys (importante: nunca enviar chaves privadas de produção para repositório público)
+**/storage/app/agt/private_key.pem
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

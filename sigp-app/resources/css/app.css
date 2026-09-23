@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configurações globais de scroll */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Scrollbar personalizada para o sidebar */
+.sidebar-nav {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%);
+    transform: scaleY(1.1);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+/* Scrollbar geral do site */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(156, 163, 175, 0.1);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0086e1 0%, #01043d 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0099ff 0%, #012055 100%);
+    transform: scaleY(1.05);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #007acc 0%, #000f33 100%);
+}
+
+/* Layout principal */
+.content-layer {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar compacta */
+.sidebar-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 240px; /* Reduzido de 280px */
+}
+
+/* Área principal com scroll */
+.main-content-area {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.main-content-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Estilos para itens do sidebar com mais espaçamento */
+.sidebar-nav a, .sidebar-nav button {
+    margin-bottom: 8px !important;
+    padding: 12px 16px !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav a:hover, .sidebar-nav button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+}
+
+/* Espaçamento adicional para seções do sidebar */
+.sidebar-nav > div > div {
+    margin-bottom: 12px;
+}
+
+/* Espaçamento para ícones no sidebar */
+.sidebar-nav i, .sidebar-nav svg {
+    margin-right: 12px !important;
+}
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0086e1 0%, #01043d 100%);
+        }
+        
+        .hover-scale {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        /* Correções para responsividade - Sidebar compacta */
+        .sidebar-fixed {
+            width: 240px; /* Reduzido de 280px */
+            min-width: 240px;
+            max-width: 240px;
+        }
+        
+        .main-content {
+            margin-left: 240px; /* Reduzido de 280px */
+            width: calc(100% - 240px);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+        
+        /* Cards responsivos */
+        .metric-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 100px; /* Reduzido de 120px */
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 280px; /* Reduzido de 300px */
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 220px; /* Reduzido de 250px */
+            }
+        }
+        
+        /* Submenu melhorado e compacto */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .submenu.expanded {
+            max-height: 150px; /* Reduzido de 200px */
+            padding: 8px 0;
+        }
+
+        .submenu-item {
+            padding-left: 2.5rem; /* Reduzido de 3rem */
+            margin: 4px 6px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+        
+        /* Texto responsivo */
+        .responsive-text {
+            font-size: clamp(0.75rem, 2vw, 0.875rem); /* Reduzido */
+        }
+        
+        .responsive-title {
+            font-size: clamp(1rem, 3vw, 1.25rem); /* Reduzido */
+        }
+        
+        /* Grid responsivo melhorado */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reduzido de 280px */
+            gap: 1rem; /* Reduzido de 1.5rem */
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Reduzido de 400px */
+            gap: 1rem; /* Reduzido de 1.5rem */
+        }
+        
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Status indicator compacto */
+        .status-indicator {
+            display: inline-block;
+            width: 6px; /* Reduzido de 8px */
+            height: 6px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+@layer components {
+    /* Sidebar com altura completa e compacta */
+    .sidebar-container {
+        @apply h-screen flex flex-col;
+    }
+    
+    .sidebar-nav {
+        @apply flex-1 flex flex-col min-h-0;
+    }
+    
+    .sidebar-nav > div:first-child {
+        @apply flex-1 overflow-y-auto;
+    }
+    
+    .sidebar-nav > div:last-child {
+        @apply flex-shrink-0 mt-auto;
+    }
+}
